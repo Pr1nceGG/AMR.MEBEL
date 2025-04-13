@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Меры безопасности -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; frame-src 'none'; object-src 'none';">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <title>AMR.MEBEL - Производство мебели</title>
+    <style>
+        /* Подключение шрифта IBM Plex Serif */
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-Regular.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-Medium.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-SemiBold.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-SemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-Bold.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --black: #222;
+            --dark-gray: #333;
+            --medium-gray: #444;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --dark-bg: #121212;
+            --dark-container: #1e1e1e;
+            --dark-text: #e0e0e0;
+            --dark-border: #333;
+        }
+        
+        body {
+            font-family: 'IBM Plex Serif', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.dark-theme {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 25px 0;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid var(--medium-gray);
+        }
+        
+        .dark-theme .header {
+            background-color: #1a1a1a;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: var(--white);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+        
+        .dark-theme .container {
+            background-color: var(--dark-container);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        h1 {
+            color: var(--black);
+            margin: 0 0 20px 0;
+            font-size: 2.4em;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .dark-theme h1 {
+            color: var(--dark-text);
+        }
+        
+        h2 {
+            color: var(--dark-gray);
+            border-bottom: 2px solid var(--medium-gray);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        
+        .dark-theme h2 {
+            color: var(--dark-text);
+            border-bottom-color: var(--dark-border);
+        }
+        
+        .info-block {
+            margin-bottom: 35px;
+            padding: 0 10px;
+        }
+        
+        .info-block p {
+            color: var(--dark-gray);
+        }
+        
+        .dark-theme .info-block p {
+            color: var(--dark-text);
+        }
+        
+        .delivery-info {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-left: 4px solid var(--medium-gray);
+            margin: 25px 0;
+        }
+        
+        .dark-theme .delivery-info {
+            background-color: #2a2a2a;
+            border-left-color: var(--dark-border);
+        }
+        
+        .contact-box {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 25px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 5px;
+        }
+        
+        .dark-theme .contact-box {
+            background-color: #2a2a2a;
+        }
+        
+        .phone {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin: 15px 0;
+            letter-spacing: 1px;
+        }
+        
+        .address {
+            font-style: italic;
+            margin: 20px 0;
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+        
+        .dark-theme .address {
+            color: #aaa;
+        }
+        
+        ul {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            line-height: 1.5;
+            color: var(--dark-gray);
+        }
+        
+        .dark-theme li {
+            color: var(--dark-text);
+        }
+        
+        .logo {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .slogan {
+            color: #ccc;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--medium-gray);
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: 'IBM Plex Serif', serif;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-gray);
+            transform: translateY(-2px);
+        }
+        
+        .btn-dark {
+            background-color: var(--dark-gray);
+        }
+        
+        .btn-dark:hover {
+            background-color: var(--black);
+        }
+
+        /* Иконки */
+        .icon {
+            vertical-align: middle;
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Навигационные кнопки */
+        .nav-btn {
+            position: absolute;
+            top: 20px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            font-family: 'IBM Plex Serif', serif;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--black);
+        }
+        
+        .home-btn {
+            left: 20px;
+        }
+        
+        .sofa-btn {
+            right: 20px;
+        }
+
+        /* Разделитель */
+        .divider {
+            height: 1px;
+            background-color: var(--medium-gray);
+            margin: 30px 0;
+            opacity: 0.3;
+        }
+        
+        .dark-theme .divider {
+            background-color: var(--dark-border);
+        }
+
+        /* Кнопка переключения темы */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 172px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 0 60px;
+            }
+            
+            .nav-btn {
+                top: auto;
+                bottom: 15px;
+            }
+            
+            .home-btn {
+                left: 15px;
+            }
+            
+            .sofa-btn {
+                right: 15px;
+            }
+            
+            .theme-toggle {
+                top: auto;
+                bottom: 15px;
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                margin: 15px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <div class="header">
+        <!-- Кнопка переключения темы -->
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <!-- Кнопка "Главная" -->
+        <a href="index.html" class="nav-btn home-btn">
+            <i class="fas fa-home icon"></i>
+            Главная
+        </a>
+        
+        <!-- Кнопка "К дивану" -->
+        <a href="index.html" class="nav-btn sofa-btn">
+            <i class="fas fa-couch icon"></i>
+            К диванам
+        </a>
+        
+        <div class="logo">AMR.MEBEL</div>
+        <div class="slogan">PRODUCTION OF UPHOLSTERED FURNITURE</div>
+    </div>
+    
+    <div class="container">
+        <div class="content">
+            <h1>Фабрика мягкой мебели</h1>
+            
+            <div class="info-block">
+                <h2>О нашей компании</h2>
+                <p>Мы - современное производственное предприятие, специализирующееся на выпуске качественной мягкой мебели. Наша фабрика оснащена новейшим оборудованием, что позволяет нам гарантировать высокое качество продукции и оперативные сроки поставок.</p>
+                <p>Все изделия производятся из экологичных материалов и проходят строгий контроль качества на каждом этапе производства.</p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="delivery-info">
+                <h2>Условия доставки</h2>
+                <ul>
+                    <li><strong>Оптовые поставки:</strong> Доставка по всей Пензенской области в течение 24 часов(если диван готовый)</li>
+                    <li><strong>Розничные заказы:</strong> Самовывоз с нашего склада</li>
+                    <li>Минимальная партия для оптовой доставки - от 5 единиц продукции</li>
+                    <li>Доставка осуществляется собственным транспортом</li>
+                    <li>Возможен индивидуальный расчет стоимости доставки</li>
+                </ul>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- Секция с диванами -->
+            <div class="info-block" id="sofas">
+                <h2>Наши диваны</h2>
+                <p>Мы производим широкий ассортимент качественных диванов различных моделей и расцветок:</p>
+                <ul>
+                    <li>Прямые и угловые модели</li>
+                    <li>Различные механизмы трансформации</li>
+                    <li>Более 50 вариантов обивочных тканей</li>
+                    <li>Индивидуальные решения по размерам</li>
+                </ul>
+                <p>Для получения полного каталога продукции свяжитесь с нашими менеджерами.8-987-513-64-87</p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="info-block">
+                <h2>Наш адрес</h2>
+                <div class="address">
+                    Российская Федерация, Пензенская область,<br>
+                    г. Кузнецк, ул. Урицкого, 53<br><br>
+                    <strong>Часы работы склада:</strong><br>
+                    Пн-Пт: 9:00 - 18:00<br>
+                    Сб-Вс: выходной<br>                  
+                </div>
+            </div>
+            
+            <div class="contact-box">
+                <h2>Свяжитесь с нами</h2>
+                <p>Для оформления заказа или получения дополнительной информации:</p>
+                <div class="phone">8-987-513-64-87</div>
+                <p>Звоните ежедневно с 8:00 до 20:00</p>
+                
+                <a href="https://wa.me/79875136487" class="btn btn-dark" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp icon"></i>
+                    Написать в WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Защита от XSS - экранирование HTML
+        function escapeHtml(unsafe) {
+            return unsafe.toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Переключение темы
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Проверяем сохраненную тему в localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Обработчик клика по кнопке переключения темы
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            
+            // Меняем иконку
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Безопасная обработка всех внешних ссылок
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
+    </script>
+</body>
+</html>

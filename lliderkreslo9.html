@@ -1,0 +1,987 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMR.MEBEL - Диван Лидер</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <!-- External Resources with SRI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <style>
+        /* Подключение шрифта IBM Plex Serif */
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('/fonts/IBMPlexSerif-Regular.woff2') format('woff2'),
+                 url('/fonts/IBMPlexSerif-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('/fonts/IBMPlexSerif-Medium.woff2') format('woff2'),
+                 url('/fonts/IBMPlexSerif-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('/fonts/IBMPlexSerif-SemiBold.woff2') format('woff2'),
+                 url('/fonts/IBMPlexSerif-SemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('/fonts/IBMPlexSerif-Bold.woff2') format('woff2'),
+                 url('/fonts/IBMPlexSerif-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Базовые стили */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'IBM Plex Serif', serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        .product {
+            max-width: 100%;
+            margin: 0;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .dark-theme .product {
+            background-color: #1e1e1e;
+        }
+        
+        /* Стили для верхнего меню */
+        .top-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .dark-theme .top-menu {
+            background-color: #252525;
+            border-bottom-color: #444;
+        }
+        
+        .menu-logo {
+            font-weight: 700;
+            font-size: 22px;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .dark-theme .menu-logo {
+            color: #e0e0e0;
+        }
+        
+        .menu-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .menu-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .dark-theme .menu-link {
+            color: #aaa;
+        }
+        
+        .menu-link:hover {
+            color: #000;
+        }
+        
+        .dark-theme .menu-link:hover {
+            color: #fff;
+        }
+        
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #333;
+            transition: width 0.3s;
+        }
+        
+        .dark-theme .menu-link::after {
+            background-color: #e0e0e0;
+        }
+        
+        .menu-link:hover::after {
+            width: 100%;
+        }
+        
+        .menu-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        /* Стили для шапки с кнопкой назад */
+        .header {
+            padding: 10px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dark-theme .header {
+            border-bottom-color: #333;
+        }
+        
+        .back {
+            width: 40px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s;
+        }
+        
+        .dark-theme .back {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+        
+        .back:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Основное содержимое */
+        .main {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        .left {
+            margin-bottom: 20px;
+        }
+        
+        .left h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .dark-theme .left h1 {
+            color: #e0e0e0;
+        }
+        
+        .left h2 {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .dark-theme .left h2 {
+            color: #aaa;
+        }
+        
+        .left h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .dark-theme .left h3 {
+            color: #e0e0e0;
+        }
+        
+        /* Стили для контейнера с изображениями */
+        .image-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        .dark-theme .image-container {
+            border-color: #444;
+            background-color: #252525;
+        }
+        
+        .sofa-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+            padding: 10px;
+        }
+        
+        .sofa-image.active {
+            display: block;
+        }
+        
+        /* Стили для правой части с описанием */
+        .right {
+            margin-top: 20px;
+        }
+        
+        /* ОСНОВНОЕ ИЗМЕНЕНИЕ - стиль для текста описания */
+        .description-text {
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .dark-theme .description-text {
+            color: #bbb;
+        }
+        
+        /* Дополнительные медиа-запросы для адаптации отступов */
+        @media (max-width: 767px) {
+            .description-text {
+                margin-top: 30px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .description-text {
+                margin-top: 50px;
+            }
+        }
+        
+        .right a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .dark-theme .right a {
+            color: #e0e0e0;
+        }
+        
+        .right a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+        
+        .dark-theme .right a:hover {
+            color: #fff;
+        }
+        
+        /* Стили для кнопок */
+        .order-btn {
+            width: 140px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(15, 15, 15);
+            border: none;
+            color: white;
+            font-weight: 600;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition-duration: .3s;
+            text-decoration: none;
+            font-family: 'IBM Plex Serif', serif;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        .dark-theme .order-btn {
+            background-color: rgb(30, 30, 30);
+        }
+        
+        .order-btn::before {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            content: "";
+            background-color: white;
+            border-radius: 50%;
+            left: -100%;
+            top: 0;
+            transition-duration: .3s;
+            mix-blend-mode: difference;
+        }
+        
+        .order-btn:hover::before {
+            transition-duration: .3s;
+            transform: translate(100%,-50%);
+            border-radius: 0;
+        }
+        
+        .order-btn:active {
+            transform: translate(2px,2px);
+            transition-duration: .3s;
+        }
+        
+        .next-btn {
+            width: 180px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(15, 15, 15);
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition-duration: .3s;
+            text-decoration: none;
+            font-family: 'IBM Plex Serif', serif;
+            border-radius: 6px;
+            margin-left: auto;
+            font-size: 16px;
+        }
+        
+        .dark-theme .next-btn {
+            background-color: rgb(30, 30, 30);
+        }
+        
+        .next-btn::before {
+            width: 180px;
+            height: 180px;
+            position: absolute;
+            content: "";
+            background-color: white;
+            border-radius: 50%;
+            left: -100%;
+            top: 0;
+            transition-duration: .3s;
+            mix-blend-mode: difference;
+        }
+        
+        .next-btn:hover::before {
+            transition-duration: .3s;
+            transform: translate(100%,-50%);
+            border-radius: 0;
+        }
+        
+        .next-btn:active {
+            transform: translate(2px,2px);
+            transition-duration: .3s;
+        }
+        
+        /* Стили для блока доставки */
+        .delivery-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .delivery-text {
+            margin-right: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .dark-theme .delivery-text {
+            color: #bbb;
+        }
+        
+        /* Навигационные точки для изображений */
+        .image-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .dark-theme .nav-dot {
+            background: #555;
+        }
+        
+        .nav-dot.active {
+            background: #333;
+            transform: scale(1.2);
+        }
+        
+        .dark-theme .nav-dot.active {
+            background: #e0e0e0;
+        }
+        
+        .nav-dot:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Стили для характеристик */
+        .specs {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        .dark-theme .specs {
+            background-color: #252525;
+        }
+        
+        .specs p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .dark-theme .specs p {
+            color: #bbb;
+        }
+        
+        .specs p strong {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .dark-theme .specs p strong {
+            color: #e0e0e0;
+        }
+        
+        /* Стили для рейтинга */
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .review-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+        
+        .dark-theme .review-link {
+            color: #e0e0e0;
+        }
+        
+        .review-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Стили для стрелок навигации изображений */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0,0,0,0.3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .nav-arrow:hover {
+            background-color: rgba(0,0,0,0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .nav-arrow.left-arrow {
+            left: 15px;
+        }
+        
+        .nav-arrow.right-arrow {
+            right: 15px;
+        }
+        
+        /* Стили для звезд рейтинга */
+        .rating-star {
+            display: flex;
+            align-items: center;
+        }
+        
+        .rating-star input[type="radio"] {
+            display: none;
+        }
+        
+        .rating-star label {
+            cursor: pointer;
+            font-size: 20px;
+            color: #ccc;
+            margin-right: 5px;
+            transition: color 0.2s;
+        }
+        
+        .rating-star label:before {
+            content: '★';
+        }
+        
+        .rating-star input[type="radio"]:checked ~ label,
+        .rating-star label:hover,
+        .rating-star label:hover ~ label {
+            color: #ffa723;
+        }
+        
+        .rating-text {
+            margin-left: 8px;
+            font-size: 15px;
+            color: #666;
+        }
+        
+        .dark-theme .rating-text {
+            color: #aaa;
+        }
+        
+        /* Переключатель темы */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .dark-theme .theme-toggle {
+            color: #e0e0e0;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        
+        /* Адаптивные стили */
+        @media (min-width: 768px) {
+            .main {
+                flex-direction: row;
+                gap: 40px;
+                padding: 30px;
+            }
+            
+            .left {
+                flex: 1;
+                margin-bottom: 0;
+            }
+            
+            .right {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                margin-top: 0;
+            }
+            
+            .image-container {
+                height: 400px;
+            }
+            
+            .left h1 {
+                font-size: 36px;
+            }
+            
+            .left h3 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .left h1 {
+                font-size: 40px;
+            }
+            
+            .left h2 {
+                font-size: 20px;
+            }
+            
+            .left h3 {
+                font-size: 32px;
+            }
+            
+            .right p {
+                font-size: 17px;
+            }
+            
+            .image-container {
+                height: 500px;
+            }
+            
+            .top-menu {
+                padding: 15px 30px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .top-menu {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .menu-nav {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .menu-icons {
+                margin-top: 10px;
+            }
+            
+            .delivery-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .next-btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+
+        /* Стили для списка характеристик */
+        .features-list {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .features-list li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .dark-theme .features-list li {
+            color: #bbb;
+        }
+        
+        /* Выравнивание контента по левому краю */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="product">
+        <!-- Верхнее меню -->
+        <div class="top-menu">
+            <a href="index.html" class="menu-logo">AMR.MEBEL</a>
+            
+            <nav class="menu-nav">
+                <a href="index.html" class="menu-link">Главная</a>
+                <a href="catalog.html" class="menu-link">Каталог</a>
+                <a href="dostavka.html" class="menu-link">Доставка</a>
+                <a href="contacts.html" class="menu-link">Контакты</a>
+                <a href="dostavka.html" class="menu-link">Доставка</a>
+                <a href="https://www.google.com/maps/place/ул.+Урицкого,+74,+Кузнецк,+Пензенская+обл.,+442544/@53.0939,46.6047891,17z/data=!4m12!1m5!3m4!2zNTPCsDA1JzM4LjAiTiA0NsKwMzYnMjYuNSJF!8m2!3d53.0938889!4d46.6073611!3m5!1s0x4141fc3592a8d085:0x36a8aaeb3ec7ce22!8m2!3d53.0937687!4d46.6074058!16s%2Fg%2F11b8z8phrj?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" class="menu-link">Где купить</a>
+            </nav>
+            
+            <div class="menu-icons">
+                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Шапка с кнопкой назад -->
+        <div class="header">
+            <a href="index.html" class="back" aria-label="Назад">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        
+        <!-- Основное содержимое -->
+        <div class="content-wrapper">
+            <div class="main">
+                <div class="left">
+                    <h1>Диван "Лидер"</h1>
+                    <h2>Прямой диван</h2>
+                    <h3>Цена по запросу</h3>
+                    
+                    <!-- Галерея изображений -->
+                    <div class="image-container">
+                        <img src="/images/lider1.png" alt="Диван Лидер - вид спереди" class="sofa-image active" id="image1" loading="lazy">
+                        <img src="/images/lider2.png" alt="Диван Лидер - вид сбоку" class="sofa-image" id="image2" loading="lazy">
+                        <img src="/images/lider3.png" alt="Диван Лидер - спальное место" class="sofa-image" id="image3" loading="lazy">
+                        
+                        <!-- Стрелки навигации -->
+                        <div class="nav-arrow left-arrow" onclick="prevImage()" role="button" aria-label="Предыдущее изображение">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="nav-arrow right-arrow" onclick="nextImage()" role="button" aria-label="Следующее изображение">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        
+                        <!-- Точки навигации -->
+                        <div class="image-nav">
+                            <div class="nav-dot active" data-target="image1" role="button" aria-label="Показать изображение 1"></div>
+                            <div class="nav-dot" data-target="image2" role="button" aria-label="Показать изображение 2"></div>
+                            <div class="nav-dot" data-target="image3" role="button" aria-label="Показать изображение 3"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Характеристики -->
+                    <div class="specs">
+                    
+                    </div>
+                </div>
+                
+                <!-- Правая часть с описанием -->
+                <div class="right">
+                    <!-- Основной текст описания с регулируемыми отступами -->
+                    <p class="description-text">Диван "Аккордеон" - Комфортная модель с изящными подлокотниками из натурального шпона. Создает неповторимый комфорт для владельца. Удобно сидеть, удобно спать и разбирать-собирать ежедневно.</p>
+                    
+                    <p><strong>Характеристики модели:</strong></p>  
+
+<ul class="features-list">
+    <li>Компактный прямой диван с габаритами 225×100 см</li>
+    <li>Изящные подлокотники из натурального шпона</li>
+    <li>Удобный двухпозиционный выкатной механизм "Лидер" на металлокаркасе</li>
+    <li>Прочное основание из бруса и фанеры</li>
+    <li>Комбинированный наполнитель: эластичный ППУ + независимый пружинный блок</li>
+    <li>Просторное спальное место 200×190 см</li>
+    <li>Удобство ежедневного использования и трансформации</li>
+    <li>Оптимальное сочетание комфорта и функциональности</li>
+</ul>     
+                    
+                    <div class="delivery-container">
+                        <p class="delivery-text">В наличии. <a href="dostavka.html">Узнать условия доставки и сборки</a></p>
+                        <button class="next-btn" id="nextModelBtn">Следующая модель</button>
+                    </div>
+                    
+                    <!-- Рейтинг и отзывы -->
+                    <div class="rating-container">
+                        <div class="rating-star">
+                            <input type="radio" id="star5" name="rating" value="5" checked>
+                            <label for="star5"></label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4"></label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3"></label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2"></label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1"></label>
+                            <span class="rating-text">5.0 (12 отзывов)</span>
+                            <a href="https://www.avito.ru/user/review?fid=789cdaf4a0216095d9c17bba4baa2ee6f9b745bc7871a0a62245ace68da1aaf881927931dd2fc5a3327bde9ff832cdcdaa225dd905100000ffff76ca187b" class="review-link" rel="noopener noreferrer">Оставить отзыв</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Кнопка заказа -->
+                    <a href="dostavka.html" class="order-btn" id="orderBtn">
+                        <i class="fas fa-shopping-cart"></i> Заказать
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+            
+            // Управление изображениями в галерее
+            const dots = document.querySelectorAll('.nav-dot');
+            const images = document.querySelectorAll('.sofa-image');
+            let currentIndex = 0;
+            let slideInterval;
+            
+            // Функция показа изображения по индексу
+            function showImage(index) {
+                if (index < 0 || index >= images.length) return;
+                
+                images.forEach(img => img.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                images[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+            // Следующее изображение
+            function nextImage() {
+                let nextIndex = (currentIndex + 1) % images.length;
+                showImage(nextIndex);
+                resetInterval();
+            }
+            
+            // Предыдущее изображение
+            function prevImage() {
+                let prevIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(prevIndex);
+                resetInterval();
+            }
+            
+            // Сброс интервала автопрокрутки
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextImage, 5000);
+            }
+            
+            // Обработчики для точек навигации
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const targetIndex = Array.from(images).findIndex(img => img.id === targetId);
+                    if (targetIndex !== -1) {
+                        showImage(targetIndex);
+                        resetInterval();
+                    }
+                });
+                
+                // Добавляем обработчик клавиатуры для доступности
+                dot.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('data-target');
+                        const targetIndex = Array.from(images).findIndex(img => img.id === targetId);
+                        if (targetIndex !== -1) {
+                            showImage(targetIndex);
+                            resetInterval();
+                        }
+                    }
+                });
+            });
+            
+            // Запуск автопрокрутки
+            slideInterval = setInterval(nextImage, 5000);
+            
+            // Обработчики для клавиатуры
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
+            });
+
+            // Переключение темы
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            
+            // Проверка сохраненной темы
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            // Обработчик переключения темы
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Обработчик кнопки "Следующая модель"
+            document.getElementById('nextModelBtn').addEventListener('click', function() {
+                window.location.href = 'lider1.html';
+            });
+            
+            // Обработчик кнопки заказа
+            document.getElementById('orderBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'dostavka.html';
+            });
+            
+            // Плавная прокрутка при загрузке страницы 
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Глобальные функции для стрелок
+            window.nextImage = nextImage;
+            window.prevImage = prevImage;
+            
+            // Обработчик ошибок
+            window.addEventListener('error', function(e) {
+                console.error('Error:', e.message, 'in', e.filename, 'line:', e.lineno);
+                return true;
+            });
+        })();
+    </script>
+</body>
+</html>

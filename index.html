@@ -1,0 +1,2446 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Меры безопасности -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; frame-src 'none'; object-src 'none';">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <title>AMR.MEBEL - Производство качественной мягкой мебели</title>
+    <style>
+        /* Шрифты */
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-Regular.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-Medium.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-SemiBold.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-SemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'IBM Plex Serif';
+            src: url('fonts/IBMPlexSerif-Bold.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'IBM Plex Serif', serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Шапка */
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            height: 150px;
+        }
+        
+        .dark-theme header {
+            background-color: #1a1a1a;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .slogan {
+            color: #ccc;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Навигация */
+        nav {
+            background-color: #333;
+            padding: 15px 20px;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .dark-theme nav {
+            background-color: #2a2a2a;
+        }
+
+        /* Новый переключатель темы */
+        .theme-switch {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1000;
+          --circle-size: 20px;
+          --container-width: 70px;
+          --container-height: 35px;
+          --transition-duration: 0.3s;
+        }
+
+        .theme-switch__checkbox {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .theme-switch__container {
+          width: var(--container-width);
+          height: var(--container-height);
+          position: relative;
+          cursor: pointer;
+          border-radius: 100px;
+          background-color: #20c997;
+          overflow: hidden;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          transition: background-color var(--transition-duration);
+        }
+
+        .dark-theme .theme-switch__container {
+          background-color: #1a1a1a;
+        }
+
+        .theme-switch__clouds {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60' viewBox='0 0 120 60'%3E%3Cpath fill='%23ffffff' opacity='0.2' d='M0 30 Q15 15 30 30 Q45 5 60 30 Q75 15 90 30 Q105 5 120 30 L120 60 L0 60 Z'/%3E%3C/svg%3E");
+          background-repeat: repeat-x;
+          background-size: 120px 60px;
+          transition: transform var(--transition-duration);
+          transform: translateX(0);
+        }
+
+        .dark-theme .theme-switch__clouds {
+          transform: translateX(-60px);
+        }
+
+        .theme-switch__stars-container {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          width: 60px;
+          height: 25px;
+          color: white;
+          opacity: 0;
+          transition: opacity var(--transition-duration);
+        }
+
+        .dark-theme .theme-switch__stars-container {
+          opacity: 1;
+        }
+
+        .theme-switch__circle-container {
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: calc(var(--container-height) - 6px);
+          height: calc(var(--container-height) - 6px);
+          border-radius: 50%;
+          background-color: #f8f9fa;
+          transition: transform var(--transition-duration);
+        }
+
+        .dark-theme .theme-switch__circle-container {
+          transform: translateX(calc(var(--container-width) - var(--container-height)));
+        }
+
+        .theme-switch__sun-moon-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .theme-switch__moon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: var(--circle-size);
+          height: var(--circle-size);
+          border-radius: 50%;
+          background-color: #1a1a1a;
+          opacity: 0;
+          transition: opacity var(--transition-duration);
+        }
+
+        .dark-theme .theme-switch__moon {
+          opacity: 1;
+        }
+
+        .theme-switch__spot {
+          position: absolute;
+          background-color: #f8f9fa;
+          border-radius: 50%;
+          transition: transform var(--transition-duration);
+        }
+
+        .theme-switch__spot:first-child {
+          top: 3px;
+          left: 5px;
+          width: 5px;
+          height: 5px;
+        }
+
+        .theme-switch__spot:nth-child(2) {
+          top: 8px;
+          left: 12px;
+          width: 6px;
+          height: 6px;
+        }
+
+        .theme-switch__spot:last-child {
+          top: 14px;
+          left: 4px;
+          width: 4px;
+          height: 4px;
+        }
+
+        /* Новое меню */
+        #checkbox {
+            display: none;
+        }
+
+        .toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition-duration: .5s;
+            z-index: 1000;
+            background: rgba(0,0,0,0.5);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .bars {
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        #checkbox:checked + .toggle .bars {
+            position: absolute;
+        }
+
+        #checkbox:checked + .toggle #bar2 {
+            transform: scaleX(0);
+        }
+
+        #checkbox:checked + .toggle #bar1 {
+            transform: rotate(45deg);
+        }
+
+        #checkbox:checked + .toggle #bar3 {
+            transform: rotate(-45deg);
+        }
+
+        /* Кнопка связи */
+        .contact-container {
+            position: fixed;
+            top: 20px;
+            right: 100px;
+            z-index: 100;
+        }
+
+        .contact-btn {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            align-items: center;
+            margin: 0 auto;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+            backdrop-filter: blur(5px);
+            font-weight: 600;
+            isolation: isolate;
+            border: 2px solid #f8f9fa;
+            position: relative;
+            z-index: 10;
+            padding: 8px 16px;
+            overflow: hidden;
+            border-radius: 9999px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background-color: #20c997;
+            transition: all 0.7s ease;
+            left: -100%;
+            top: 0;
+            border-radius: 9999px;
+            z-index: -1;
+        }
+
+        .contact-btn:hover::before {
+            width: 100%;
+            left: 0;
+        }
+
+        .contact-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-btn i {
+            margin-right: 5px;
+        }
+
+        .contact-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dark-theme .contact-dropdown {
+            background-color: #2a2a2a;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+        }
+
+        .contact-dropdown a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dark-theme .contact-dropdown a {
+            color: #e0e0e0;
+        }
+
+        .contact-dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dark-theme .contact-dropdown a:hover {
+            background-color: #333;
+        }
+
+        .contact-dropdown a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .whatsapp-option {
+            color: #25D366;
+        }
+
+        .contact-container:hover .contact-dropdown {
+            display: block;
+        }
+
+        /* Боковое меню */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #333;
+            z-index: 999;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+            transition: left 0.3s ease-out;
+            padding-top: 80px;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #555;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Основной контент */
+        .container {
+            width: 100%;
+            padding: 20px;
+            background: white;
+        }
+
+        .dark-theme .container {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        /* Баннер */
+        .banner {
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            padding: 20px;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+        }
+
+        /* 3D Карусель Avito - полный рост */
+        .avito-slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avito-title {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .avito-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .inner {
+            --w: 150px;
+            --h: 300px;
+            --translateZ: 350px;
+            --rotateX: -15deg;
+            --perspective: 1000px;
+            position: absolute;
+            width: var(--w);
+            height: var(--h);
+            top: 50%;
+            left: calc(50% - (var(--w) / 2) - 2.5px);
+            z-index: 2;
+            transform-style: preserve-3d;
+            transform: perspective(var(--perspective));
+            animation: rotating 20s linear infinite;
+        }
+
+        @keyframes rotating {
+            from {
+                transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+                rotateY(0);
+            }
+            to {
+                transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+                rotateY(1turn);
+            }
+        }
+
+        .card {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            inset: 0;
+            transform: rotateY(calc((360deg / 6) * var(--index)))
+            translateZ(350px);
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .card:hover {
+            transform: rotateY(calc((360deg / 6) * var(--index)))
+            translateZ(350px) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #0000
+            radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.6) 80%,
+                rgba(255, 255, 255, 0.9) 100%
+            );
+        }
+
+        /* Стиль для второго слайда (ВК) */
+        .vk-slide {
+            background: rgba(70, 70, 70, 0.8);
+            text-decoration: none !important;
+        }
+
+        .vk-slide h1 {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* Стиль для третьего слайда (Доставка) */
+        .delivery-slide {
+            background: rgba(70, 70, 70, 0.8);
+            text-decoration: none !important;
+        }
+
+        .delivery-slide h1 {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* Новые стили для слайда с местоположением */
+        .location-slide {
+            background: rgba(70, 70, 70, 0.8);
+            text-decoration: none !important;
+        }
+        
+        .location-slide h1 {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        
+        /* Стили для глобуса */
+        .earth-loader {
+            --watercolor: #3344c1;
+            --landcolor: #7cc133;
+            width: 200px;
+            height: 200px;
+            background-color: var(--watercolor);
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow:
+                inset 0 10px rgba(255, 255, 255, 0.25),
+                inset 0 -10px rgba(0, 0, 0, 0.25);
+            border: solid 3px white;
+            animation: startround 1s;
+            animation-iteration-count: 1;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .earth-loader:hover {
+            transform: scale(1.05);
+        }
+
+        .earth-loader svg:nth-child(1) {
+            position: absolute;
+            bottom: -40px;
+            width: 200px;
+            height: auto;
+            animation: round1 5s infinite linear 0.75s;
+        }
+
+        .earth-loader svg:nth-child(2) {
+            position: absolute;
+            top: -60px;
+            width: 200px;
+            height: auto;
+            animation: round1 5s infinite linear;
+        }
+        
+        .earth-loader svg:nth-child(3) {
+            position: absolute;
+            top: -50px;
+            width: 200px;
+            height: auto;
+            animation: round2 5s infinite linear;
+        }
+        
+        .earth-loader svg:nth-child(4) {
+            position: absolute;
+            bottom: -44px;
+            width: 200px;
+            height: auto;
+            animation: round2 5s infinite linear 0.75s;
+        }
+
+        @keyframes startround {
+            0% {
+                filter: brightness(500%);
+                box-shadow: none;
+            }
+            75% {
+                filter: brightness(500%);
+                box-shadow: none;
+            }
+            100% {
+                filter: brightness(100%);
+                box-shadow:
+                    inset 0 10px rgba(255, 255, 255, 0.25),
+                    inset 0 -10px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        @keyframes round1 {
+            0% {
+                left: -40px;
+                opacity: 100%;
+                transform: skewX(0deg) rotate(0deg);
+            }
+            30% {
+                left: -120px;
+                opacity: 100%;
+                transform: skewX(-25deg) rotate(25deg);
+            }
+            31% {
+                left: -120px;
+                opacity: 0%;
+                transform: skewX(-25deg) rotate(25deg);
+            }
+            35% {
+                left: 140px;
+                opacity: 0%;
+                transform: skewX(25deg) rotate(-25deg);
+            }
+            45% {
+                left: 140px;
+                opacity: 100%;
+                transform: skewX(25deg) rotate(-25deg);
+            }
+            100% {
+                left: -40px;
+                opacity: 100%;
+                transform: skewX(0deg) rotate(0deg);
+            }
+        }
+
+        @keyframes round2 {
+            0% {
+                left: 100px;
+                opacity: 100%;
+                transform: skewX(0deg) rotate(0deg);
+            }
+            75% {
+                left: -140px;
+                opacity: 100%;
+                transform: skewX(-25deg) rotate(25deg);
+            }
+            76% {
+                left: -140px;
+                opacity: 0%;
+                transform: skewX(-25deg) rotate(25deg);
+            }
+            77% {
+                left: 160px;
+                opacity: 0%;
+                transform: skewX(25deg) rotate(-25deg);
+            }
+            80% {
+                left: 160px;
+                opacity: 100%;
+                transform: skewX(25deg) rotate(-25deg);
+            }
+            100% {
+                left: 100px;
+                opacity: 100%;
+                transform: skewX(0deg) rotate(0deg);
+            }
+        }
+        
+        /* Стили для кнопки местоположения */
+        .location-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3344c1;
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+        
+        .location-button:hover {
+            background-color: #2536a0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .location-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .location-info {
+            color: white;
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Убираем подчеркивание у ссылок в слайдах */
+        .banner-slide a {
+            text-decoration: none;
+        }
+
+        /* Новый стиль для карточки ВК */
+        .vk-card {
+          width: 190px;
+          height: 120px;
+          padding: 0.5rem;
+          background: rgba(198, 198, 198, 0.34);
+          border-radius: 8px;
+          backdrop-filter: blur(5px);
+          border-bottom: 3px solid rgba(255, 255, 255, 0.440);
+          border-left: 2px  rgba(255, 255, 255, 0.545) outset;
+          box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
+          transform: skewX(10deg);
+          transition: .4s;
+          overflow: hidden;
+          color: white;
+          margin: 0 auto;
+        }
+
+        .vk-card:hover {
+          height: 254px;
+          transform: skew(0deg);
+        }
+
+        .align {
+          padding: 1rem;
+          display: flex;
+          flex-direction: row;
+          gap: 5px;
+          align-self: flex-start;
+        }
+
+        .red {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #ff605c;
+          box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
+        }
+
+        .yellow {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #ffbd44;
+          box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
+        }
+
+        .green {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #00ca4e;
+          box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
+        }
+
+        .vk-card h1 {
+          text-align: center;
+          margin: 1.3rem;
+          color: rgb(218, 244, 237);
+          text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
+        }
+
+        /* Анимация доставки */
+        .ti {
+          background-color: #808080;
+          width: 200px;
+          height: 200px;
+          border-radius: 100%;
+          border: 3px solid #fff;
+          display: inline-block;
+          text-align: center;
+          overflow: hidden;
+          position: relative;
+          margin: 20px auto;
+        }
+        .ti * { display: block; }
+
+        .ti_truck {
+          width: 140px;
+          height: 75px;
+          border: 3px solid #fff;
+          border-left: 0;
+          position: absolute;
+          bottom: 58px;
+          left: 29px;
+          background-color: #808080;
+        }
+
+        .ti_truck:before,
+        .ti_truck:after {
+          content: '';
+          position: absolute;
+          display: block;
+        }
+
+        .ti_truck:before {
+          background-color: #808080;
+          width: 35px;
+          height: 50px;
+          top: -3px;
+          left: 0;
+        }
+
+        .ti_truck:after {
+          background-color: #fff;
+          width: 3px;
+          height: 20px;
+          bottom: 0;
+          left: 0;
+        }
+
+        .ti_truck-wheel {
+          background-color: #fff;
+          border: 5px solid #808080;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          position: absolute;
+          bottom: -18px;
+          transition: all 1s ease;
+        }
+
+        .ti_truck-wheel.wheel-left { 
+          left: 15px; 
+          animation: wheel-left-effect 1s infinite;
+        }
+
+        .ti_truck-wheel.wheel-right { 
+          right: 10px; 
+          animation: wheel-right-effect 1s infinite 1.4s;
+        }
+
+        .ti_truck-wheel:before,
+        .ti_truck-wheel:after {
+          content: '';
+          position: absolute;
+          display: block;
+        }
+
+        .ti_truck-wheel:before {
+          background-color: #00e6fe;
+          border: 5px solid #808080;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          top: 3px;
+          left: 3px;
+        }
+
+        .ti_truck-wheel:after {
+          background-color: #808080;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          top: 10px;
+          left: 10px;
+        }
+
+        @keyframes wheel-left-effect {
+          from { bottom: -16px; }
+          to   { bottom: -18px; }
+        }
+
+        @keyframes wheel-right-effect {
+          from { bottom: -14px; }
+          to   { bottom: -18px; }
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: #444;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 1px solid #555;
+        }
+
+        .btn:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+
+        /* Секции */
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Заголовок "Наша продукция" по центру */
+        .products-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+        }
+
+        .products-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #444;
+            margin: 0.5rem auto;
+        }
+
+        .dark-theme .products-title:after {
+            background: #666;
+        }
+
+        /* Стили для продуктов */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .dark-theme .product-card {
+            background-color: #2a2a2a;
+            border-color: #444;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .dark-theme .product-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .product-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            transition: transform 0.3s;
+        }
+        
+        .dark-theme .product-img {
+            border-bottom-color: #444;
+        }
+        
+        .product-img:hover {
+            transform: scale(1.02);
+        }
+        
+        .product-content {
+            padding: 15px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+        
+        .dark-theme .product-content h3 {
+            color: #e0e0e0;
+        }
+        
+        .product-details {
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .dark-theme .product-details {
+            color: #aaa;
+        }
+        
+        .product-details strong {
+            color: #444;
+        }
+        
+        .dark-theme .product-details strong {
+            color: #ccc;
+        }
+
+        /* Стили для фильтров */
+        .filters {
+            background-color: #f8f8f8;
+            padding: 0;
+            border-radius: 8px;
+            margin: 0 auto 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-height: 60px;
+            transition: max-height 0.5s ease-in-out;
+            max-width: 1200px;
+        }
+        
+        .dark-theme .filters {
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .filters.expanded {
+            max-height: 1000px;
+        }
+        
+        .filter-toggle-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #444;
+            color: white;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .filter-toggle-btn i {
+            transition: transform 0.3s;
+        }
+        
+        .filters.expanded .filter-toggle-btn i {
+            transform: rotate(180deg);
+        }
+        
+        .filter-content {
+            padding: 20px;
+        }
+        
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        
+        .filter-group h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        .dark-theme .filter-group h3 {
+            color: #e0e0e0;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-option {
+            padding: 8px 15px;
+            background-color: #eee;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .dark-theme .filter-option {
+            background-color: #444;
+            color: #e0e0e0;
+        }
+        
+        .filter-option:hover, .filter-option.active {
+            background-color: #444;
+            color: white;
+        }
+        
+        .dark-theme .filter-option:hover, 
+        .dark-theme .filter-option.active {
+            background-color: #555;
+        }
+        
+        .dimension-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dimension-input input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .dark-theme .dimension-input input {
+            background-color: #333;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+        
+        .filter-btn {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .filter-btn:hover {
+            background-color: #555;
+        }
+        
+        .no-res
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #666;
+            grid-column: 1 / -1;
+        }
+        
+        .dark-theme .no-results {
+            color: #aaa;
+        }
+
+        /* Контакты в футере */
+        .contacts-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .phone-numbers {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .phone-numbers a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        .dark-theme .phone-numbers a {
+            color: #e0e0e0;
+        }
+        
+        .phone-numbers a:hover {
+            color: #25D366;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Стиль для текста "Создайте пространство..." */
+        .highlight-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dark-theme .highlight-text {
+            color: white;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 30px 0 0;
+        }
+
+        .dark-theme footer {
+            background-color: #1a1a1a;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .footer-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-menu a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .footer-menu a:hover {
+            color: white;
+            background-color: #444;
+        }
+
+        .footer-bottom {
+            background-color: #111;
+            padding: 20px;
+        }
+
+        .dark-theme .footer-bottom {
+            background-color: #0d0d0d;
+        }
+
+        .footer-note {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: center;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+                margin-top: 10px;
+            }
+            
+            .banner {
+                height: 500px;
+            }
+            
+            .avito-title {
+                font-size: 1.8rem;
+                top: 15px;
+            }
+            
+            .inner {
+                --w: 100px;
+                --h: 200px;
+                --translateZ: 250px;
+            }
+            
+            .card {
+                transform: rotateY(calc((360deg / 6) * var(--index)))
+                translateZ(250px);
+            }
+            
+            .card:hover {
+                transform: rotateY(calc((360deg / 6) * var(--index)))
+                translateZ(250px) scale(1.05);
+            }
+            
+            .footer-menu ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .mobile-menu {
+                width: 250px;
+            }
+            
+            .contact-container {
+                top: 70px;
+                right: 10px;
+            }
+
+            .filter-options {
+                flex-direction: column;
+            }
+            
+            .dimension-input {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .theme-switch {
+                top: 70px;
+                right: 10px;
+            }
+            
+            .contact-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Стили для точек слайдера */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.2);
+        }
+
+        /* Стили для кнопок навигации слайдера */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .slider-nav-btn {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .slider-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .slider-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .slider-nav-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <!-- Новое меню -->
+    <input type="checkbox" id="checkbox">
+    <label class="toggle" for="checkbox">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </label>
+    
+    <!-- Контейнер для кнопок темы и связи (справа) -->
+    <div class="contact-container">
+        <button class="contact-btn">
+            <i class="fas fa-phone-alt"></i> Связь
+        </button>
+        <div class="contact-dropdown">
+            <a href="https://wa.me/79048538888" class="whatsapp-option" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="tel:79048538888">
+                <i class="fas fa-phone"></i> 8-904-853-88-88
+            </a>
+            <a href="tel:79875136487">
+                <i class="fas fa-phone"></i> 8-987-513-64-87
+            </a>
+        </div>
+    </div>
+    
+    <!-- Новый переключатель темы -->
+    <label class="theme-switch">
+      <input type="checkbox" class="theme-switch__checkbox">
+      <div class="theme-switch__container">
+        <div class="theme-switch__clouds"></div>
+        <div class="theme-switch__stars-container">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+          </svg>
+        </div>
+        <div class="theme-switch__circle-container">
+          <div class="theme-switch__sun-moon-container">
+            <div class="theme-switch__moon">
+              <div class="theme-switch__spot"></div>
+              <div class="theme-switch__spot"></div>
+              <div class="theme-switch__spot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+    
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo">AMR.MEBEL</div>
+        <div class="slogan">PRODUCTION OF UPHOLSTERED FURNITURE</div>
+    </header>
+    
+    <!-- Навигация -->
+    <nav>
+        <!-- Боковое меню - открывается слева направо -->
+        <div class="mobile-menu" id="mobileMenu">
+            <span class="close-menu" id="closeMenu">&times;</span>
+            <ul>
+                <li><a href="home">Главная</a></li>
+                <li><a href="about">О нас</a></li>
+                <li><a href="products">Продукция</a></li>
+                <li><a href="contacts">Контакты</a></li>
+                <li><a href="dostavka.html">Доставка</a></li>
+                <li><a href="https://www.google.com/maps/place/ул.+Урицкого,+74,+Кузнецк,+Пензенская+обл.,+442544/@53.0939,46.6047891,17z/data=!4m12!1m5!3m4!2zNTPCsDA1JzM4LjAiTiA0NsKwMzYnMjYuNSJF!8m2!3d53.0939!4d46.607364!3m5!1s0x4141fc3592a8d085:0x36a8aaeb3ec7ce22!8m2!3d53.0937687!4d46.6074058!16s%2Fg%2F11b8z8phrj?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" rel="noopener noreferrer">Где купить</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Основное содержимое -->
+    <div class="container">
+        <!-- Баннер -->
+        <div class="banner" id="home">
+            <div class="banner-content">
+                <!-- Слайд Avito с 3D каруселью -->
+                <div class="banner-slide avito-slide active">
+                    <h2 class="avito-title"><a href="https://www.avito.ru/brands/026cd720b49309548ed8fe6639f55ad0/all/mebel_i_interer?page_from=from_item_card&iid=7305263644&sellerId=c31c867e3993b336c97317b11dbb6bd5" target="_blank" rel="noopener noreferrer">Мы есть на Avito!</a></h2>
+                    <div class="wrapper">
+                        <div class="inner" style="--quantity: 6;">
+                            <!-- Карточка 1 -->
+                            <div class="card" style="--index: 0;">
+                                <a href="https://www.avito.ru/penza/mebel_i_interer/evro_pryamoy_divan_7305263644" target="_blank" rel="noopener noreferrer">
+                                    <img class="img" src="images/evro.png" alt="Evro">
+                                </a>
+                                </div>
+                            <!-- Карточка 2 -->
+                            <div class="card" style="--index: 1;">
+                                <a href="https://www.avito.ru/penza/mebel_i_interer/tokiouglovoy_divan_7305783278" target="_blank" rel="noopener noreferrer">
+                                    <img class="img" src="images/tokiougl.png" alt="Tokio Uglovoy">
+                                </a>
+                            </div>
+                            <!-- Карточка 3 -->
+                            <div class="card" style="--index: 2;">
+                                <a href="https://www.avito.ru/penza/mebel_i_interer/tokio_pryamoy_divan_7305046277" target="_blank" rel="noopener noreferrer">
+                                    <img class="img" src="images/tokio.png" alt="Tokio Pryamoy">
+                                </a>
+                            </div>
+                            <!-- Карточка 4 -->
+                            <div class="card" style="--index: 3;">
+                                <a href="https://www.avito.ru/penza/mebel_i_interer/akkordeonpryamoy_divan_7305831846" target="_blank" rel="noopener noreferrer">
+                                    <img class="img" src="images/akk.png" alt="Akkordeon">
+                                </a>
+                            </div>
+                            <!-- Карточка 5 -->
+                            <div class="card" style="--index: 4;">
+                                <a href="https://www.avito.ru/penza/mebel_i_interer/loft_pryamoy_divan_7305540542" target="_blank" rel="noopener noreferrer">
+                                    <img class="img" src="images/loft.png" alt="Loft">
+                                </a>
+                            </div>
+                            <!-- Карточка 6 -->
+                            <div class="card" style="--index: 5;">
+                                <a href="https://www.avito.ru/penza/mebel_i_interer/liderpryamoy_divan_7305913513" target="_blank" rel="noopener noreferrer">
+                                    <img class="img" src="images/lider.png" alt="Lider">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Слайд 2 - ВК -->
+                <div class="banner-slide vk-slide">
+                    <h1>У нас есть своя группа в ВК!</h1>
+                    <div class="vk-card">
+                        <div class="align">
+                            <div class="red"></div>
+                            <div class="yellow"></div>
+                            <div class="green"></div>
+                        </div>
+                        <h1>VK</h1>
+                    </div>
+                    <a href="https://vk.com/amr.mebel?from=groups" class="btn" target="_blank" rel="noopener noreferrer">Перейти в группу ВК</a>
+                </div>
+                
+                <!-- Слайд 3 - Доставка -->
+                <div class="banner-slide delivery-slide">
+                    <h1>Доставка</h1>
+                    <div class="ti">
+                        <div class="ti_truck">
+                            <div class="ti_truck-wheel wheel-left"></div>
+                            <div class="ti_truck-wheel wheel-right"></div>
+                        </div>
+                    </div>
+                    <a href="dostavka.html" class="btn">Подробнее о доставке</a>
+                </div>
+                
+                <!-- Новый слайд 4 - Местоположение -->
+                <div class="banner-slide location-slide">
+                    <h1>Наше местоположение</h1>
+                    <p class="location-info">Мы находимся в Пензенской области, г. Кузнецк. Нажмите на глобус или кнопку ниже, чтобы увидеть наше местоположение на карте.</p>
+                    
+                    <a href="https://www.google.com/maps?q=53.093900,46.607364" target="_blank" rel="noopener noreferrer" class="location-link">
+                        <div class="earth-loader">
+                            <svg viewBox="0 0 100 50">
+                                <path fill="var(--landcolor)" d="M20,30 Q30,20 40,30 Q50,40 60,30 Q70,20 80,30 L80,50 L20,50 Z"/>
+                            </svg>
+                            <svg viewBox="0 0 100 50">
+                                <path fill="var(--landcolor)" d="M10,20 Q20,10 30,20 Q40,30 50,20 Q60,10 70,20 L70,50 L10,50 Z"/>
+                            </svg>
+                            <svg viewBox="0 0 100 50">
+                                <path fill="var(--landcolor)" d="M15,15 Q25,5 35,15 Q45,25 55,15 Q65,5 75,15 L75,50 L15,50 Z"/>
+                            </svg>
+                            <svg viewBox="0 0 100 50">
+                                <path fill="var(--landcolor)" d="M5,25 Q15,15 25,25 Q35,35 45,25 Q55,15 65,25 L65,50 L5,50 Z"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.google.com/maps?q=53.093900,46.607364" target="_blank" rel="noopener noreferrer" class="location-button">
+                        <i class="fas fa-map-marker-alt"></i> Наше местоположение
+                    </a>
+                </div>
+                
+                <!-- Навигационные кнопки слайдера -->
+                <div class="slider-nav">
+                    <button class="slider-nav-btn prev-slide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-nav-btn next-slide"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <!-- Точки слайдера -->
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                    <div class="slider-dot" data-slide="3"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- О компании -->
+        <section class="section" id="about">
+            <h2 class="section-title">О НАС</h2>
+            <p>Современный дизайн наших изделий, широкий ассортимент современных материалов и комплектующих позволяет нашей продукции быть конкурентоспособной на рынке мягкой мебели и удовлетворять наших покупателей приятным соотношением цены и качества.</p>
+            <p>Использование качественного сырья, тканей и материалов для наполнения обеспечивают удобства и эстетику нашей мебели.</p>
+            <p class="highlight-text">Создайте пространство мечты вместе с AMR.MEBEL!</p>
+        </section>
+        
+        <!-- Продукция -->
+        <section id="products">
+            <h2 class="products-title">Наша продукция</h2>
+            
+            <!-- Фильтры для диванов -->
+            <div class="filters" id="filtersContainer">
+                <button class="filter-toggle-btn" id="filterToggleBtn">
+                    <span>Показать фильтры</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                
+                <div class="filter-content" id="filterContent">
+                    <div class="filter-group">
+                        <h3>Тип дивана</h3>
+                        <div class="filter-options">
+                            <div class="filter-option" data-filter="type" data-value="прямой">Прямой</div>
+                            <div class="filter-option" data-filter="type" data-value="угловой">Угловой</div>
+                            <div class="filter-option" data-filter="type" data-value="мини">Мини</div>
+                            <div class="filter-option" data-filter="type" data-value="кресло">Кресло</div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Механизм</h3>
+                        <div class="filter-options">
+                            <div class="filter-option" data-filter="mechanism" data-value="Выкатной двухпозиционный">Выкатной</div>
+                            <div class="filter-option" data-filter="mechanism" data-value="Тик-так">Тик-так</div>
+                            <div class="filter-option" data-filter="mechanism" data-value="Аккордеон-металлокаркас">Аккордеон</div>
+                            <div class="filter-option" data-filter="mechanism" data-value="Еврокнига">Еврокнига</div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Габариты (ширина x глубина, см)</h3>
+                        <div class="dimension-input">
+                            <input type="number" id="width-min" placeholder="От" min="0">
+                            <span>x</span>
+                            <input type="number" id="depth-min" placeholder="От" min="0">
+                            <span>до</span>
+                            <input type="number" id="width-max" placeholder="До" min="0">
+                            <span>x</span>
+                            <input type="number" id="depth-max" placeholder="До" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Спальное место (ширина x длина, см)</h3>
+                        <div class="dimension-input">
+                            <input type="number" id="sleep-width-min" placeholder="От" min="0">
+                            <span>x</span>
+                            <input type="number" id="sleep-length-min" placeholder="От" min="0">
+                            <span>до</span>
+                            <input type="number" id="sleep-width-max" placeholder="До" min="0">
+                            <span>x</span>
+                            <input type="number" id="sleep-length-max" placeholder="До" min="0">
+                        </div>
+                    </div>
+                    
+                    <button class="filter-btn" id="applyFilters">Применить фильтры</button>
+                    <button class="filter-btn" id="resetFilters">Сбросить фильтры</button>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="productsContainer">
+                <!-- Диван 1 -->
+                <div class="product-card" data-type="прямой" data-mechanism="Выкатной двухпозиционный" data-dimensions="225x100" data-sleeping="200x190">
+                    <a href="lider1.html"><img class="product-img" src="images/lider.png" alt="Лидер"></a>
+                    <div class="product-content">
+                        <h3>Лидер (прямой диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong> Выкатной двухпозиционный</p>
+                            <p><strong>Основание настила:</strong> Брус, фанера</p>
+                            <p><strong>Наполнитель:</strong> Эластичный ППУ + Независимый пружинный блок</p>
+                            <p><strong>Габариты:</strong> 225x100 см</p>
+                            <p><strong>Спальное место:</strong> 200x190 см</p>  
+                        </div>
+                        <a href="lider1.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 2 -->
+                <div class="product-card" data-type="прямой" data-mechanism="Тик-так" data-dimensions="245x105" data-sleeping="150x190">
+                    <a href="loft2.html"><img class="product-img" src="images/loft.png" alt="Лофт"></a>
+                    <div class="product-content">
+                        <h3>Лофт (прямой диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong> Тик-так</p>
+                            <p><strong>Основание настила:</strong> Брус,фанера,мебельная плита</p>
+                            <p><strong>Наполнитель:</strong> +эластичный ППУ +независимый пружиный блок + Periotek form</p>
+                            <p><strong>Габариты:</strong> 245x105 см</p>
+                            <p><strong>Спальное Место:</strong> 150x190 см</p>
+                        </div>
+                        <a href="loft2.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 3 -->
+                <div class="product-card" data-type="прямой" data-mechanism="Аккордеон-металлокаркас" data-dimensions="140x110" data-sleeping="130x205">
+                    <a href="akk3.html"><img class="product-img" src="images/akk.png" alt="Аккордеон"></a>
+                    <div class="product-content">
+                        <h3>Аккордеон (прямой диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong> Аккордеон-металлокаркас</p>
+                            <p><strong>Основание настила:</strong> гнутоклееные березовые латы </p>
+                            <p><strong>Наполнитель:</strong>+ Эластичный ППУ +независимый пружиный блоек +Hollcon </p>
+                            <p><strong>Габариты:</strong> 140x110 см</p>
+                            <p><strong>Cпальное место:</strong> 130x205 см</p>
+                            <p><strong>Возможное увеличение от 70 до 180</strong></p>
+                        </div>
+                        <a href="akk3.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 4 -->
+                <div class="product-card" data-type="прямой" data-mechanism="Тик-так" data-dimensions="225x105" data-sleeping="150x190">
+                    <a href="tokio4.html"><img class="product-img" src="images/tokio.png" alt="Токио"></a>
+                    <div class="product-content">
+                        <h3>Токио (прямой диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong>Тик-так</p>
+                            <p><strong>Основание настила:</strong>Металлокаркас</p>
+                            <p><strong>Наполнитель:</strong>+эластичный ППУ +независимый пружинный блок +Periotek  from</p>
+                            <p><strong>Габариты:</strong> 225x105 см</p>
+                            <p><strong>Спальное место:</strong> 150x190 см</p>        
+                        </div>
+                        <a href="tokio4.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 5 -->
+                <div class="product-card" data-type="угловой" data-mechanism="Тик-так" data-dimensions="225x105" data-sleeping="200x110">
+                    <a href="tokiougl4.html"><img class="product-img" src="images/tokiougl.png" alt="Токио угловой"></a>
+                    <div class="product-content">
+                        <h3>Токио (угловой диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong>Тик-так</p>
+                            <p><strong>Основание настила:</strong> металлокаркас</p>
+                            <p><strong>Наполнитель:</strong>+эластичный ППУ +независимый пружинный блок +Periotek form</p>
+                            <p><strong>Габариты:</strong> 225x105 см</p>
+                            <p><strong>Спальное место:</strong> 200x110 см</p> 
+                            <p><strong>Угол:взаимозаменяемый</strong></p> 
+                        </div>
+                        <a href="tokiougl4.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 6 -->
+                <div class="product-card" data-type="прямой" data-mechanism="Еврокнига" data-dimensions="190x95" data-sleeping="190x140">
+                    <a href="evro5.html"><img class="product-img" src="images/evro.png" alt="Евро "></a>
+                    <div class="product-content">
+                        <h3>Евро (прямой диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong>Еврокнига</p>
+                            <p><strong>Основание настила:</strong>Брус, фанера</p>
+                            <p><strong>Наполнитель:</strong>+эластичный ППУ +независимые пружины</p>
+                            <p><strong>Габариты:</strong> 190x95 см</p>
+                            <p><strong>Спальное место:</strong> 190x140 см</p> 
+                        </div>
+                        <a href="evro5.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 7 -->
+                <div class="product-card" data-type="прямой" data-mechanism="Еврокнига" data-dimensions="210x100" data-sleeping="185x90">
+                    <a href="monako6.html"><img class="product-img" src="images/monako.png" alt="Монако"></a>
+                    <div class="product-content">
+                        <h3>Монако (прямой диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong> Еврокнига</p>
+                            <p><strong>Основание настила:</strong> Брус,фанера</p>
+                            <p><strong>Наполнитель:</strong> +Эластичный ППУ + Независимый пружиный блок</p>
+                            <p><strong>Габариты:</strong> 210х100 см</p>
+                            <p><strong>Спальное место:</strong> 185x90 см</p>
+                        </div>
+                        <a href="monako6.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 8 -->
+                <div class="product-card" data-type="мини" data-mechanism="Металлокаркас" data-dimensions="120x80" data-sleeping="185x100">
+                    <a href="solo7.html"><img class="product-img" src="images/solo.png" alt="Соло"></a>
+                    <div class="product-content">
+                        <h3>Соло (мини диван)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong>Металлокаркас</p>
+                            <p><strong>Основание настила:</strong>Гнетокленные березовые латы</p>
+                            <p><strong>Наполнитель:</strong>Эластичный ППУ</p>
+                            <p><strong>Габариты:</strong> 120x80 см</p>
+                            <p><strong>Спальное место:</strong> 185x100 см</p> 
+                            <p><strong>Ящик для белья</strong></p>
+                        </div>
+                        <a href="solo7.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Диван 9 -->
+                <div class="product-card" data-type="кресло" data-mechanism="Выкатной двухпозиционный" data-dimensions="105x100" data-sleeping="70x200">
+                    <a href="lliderkreslo9.html"><img class="product-img" src="images/liderkreslo.png" alt="Лидер"></a>
+                    <div class="product-content">
+                        <h3>Лидер (Кресло)</h3>
+                        <div class="product-details">
+                            <p><strong>Механизм:</strong>Выкатной двухпозиционный металлокаркас</p>
+                            <p><strong>Основание настила:</strong> Брус, фанера</p>
+                            <p><strong>Наполнитель:</strong>+ эластичный ППУ +независимый пружинный блок</p>
+                            <p><strong>Габариты:</strong> 105x100 см</p>
+                            <p><strong>Спальное место:</strong> 70x200 см</p>
+                        </div>
+                        <a href="lliderkreslo9.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Контакты -->
+        <section class="section" id="contacts">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contacts-container">
+                <div class="phone-numbers">
+                    <a href="https://wa.me/79048538888" target="_blank" rel="noopener noreferrer">8-904-853-88-88</a>
+                    <a href="https://wa.me/79875136487" target="_blank" rel="noopener noreferrer">8-987-513-64-87</a>
+                </div>
+                <a href="https://wa.me/79048538888" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+                </a>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Меню</h3>
+                <div class="footer-menu">
+                    <ul>
+                        <li><a href="home">Главная</a></li>
+                        <li><a href="about">О нас</a></li>
+                        <li><a href="products">Продукция</a></li>
+                        <li><a href="contacts">Контакты</a></li>
+                        <li><a href="dostavka.html">Доставка</a></li>
+                        <li><a href="https://www.google.com/maps/place/ул.+Урицкого,+74,+Кузнецк,+Пензенская+обл.,+442544/@53.0939,46.6047891,17z/data=!4m12!1m5!3m4!2zNTPCsDA1JzM4LjAiTiA0NsKwMzYnMjYuNSJF!8m2!3d53.0939!4d46.607364!3m5!1s0x4141fc3592a8d085:0x36a8aaeb3ec7ce22!8m2!3d53.0937687!4d46.6074058!16s%2Fg%2F11b8z8phrj?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Где купить</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-note">
+                <p>© 2025 AMR.MEBEL. Все права защищены.</p>
+                <p>Производство качественной мягкой мебели в России</p>
+                <p>МЫ ВСЕГДА УЧИТЫВАЕМ ТЕНДЕНЦИИ ПОСТОЯННО МЕНЯЮЩЕГОСЯ РЫНКА МЯГКОЙ МЕБЕЛИ И ПОЖЕЛАНИЯ ПОКУПАТЕЛЯ. СОЗДАЙТЕ ПРОСТРАНСТВО МЕЧТЫ ВМЕСТЕ С AMR.MEBEL!</p>
+                <p>В СВЯЗИ С ОСОБЕННОСТЯМИ ПОЛИГРАФИИ, ЦВЕТА ТКАНЕЙ И ДЕКОРОВ В КАТАЛОГЕ МОГУТ ОТЛИЧАТЬСЯ ОТ ОРИГИНАЛА. ПРИ ЗАКАЗЕ ОБЯЗАТЕЛЬНО СМОТРИТЕ ОБРАЗЦЫ!</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript с улучшенной безопасностью -->
+    <script>
+        // Защита от XSS - экранирование HTML
+        function escapeHtml(unsafe) {
+            return unsafe.toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Защита от CSRF
+        function getCSRFToken() {
+            const token = document.cookie.match(/csrf_token=([^;]+)/);
+            return token ? token[1] : null;
+        }
+
+        // Безопасная обработка URL
+        function safeRedirect(url) {
+            const allowedDomains = ['avito.ru', 'google.com', 'vk.com', 'wa.me'];
+            const parsedUrl = new URL(url, window.location.origin);
+            
+            if (allowedDomains.some(domain => parsedUrl.hostname.endsWith(domain))) {
+                window.location.href = parsedUrl.toString();
+            } else {
+                console.error('Redirect to untrusted domain blocked:', parsedUrl.hostname);
+            }
+        }
+
+        // Безопасные HTTP-запросы
+        async function safeFetch(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    credentials: 'same-origin',
+                    headers: {
+                        ...options.headers,
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': getCSRFToken()
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Network response was not ok');
+                return await response.json();
+            } catch (error) {
+                console.error('Fetch error:', error);
+                return null;
+            }
+        }
+
+        // Переключение темы
+        const themeSwitch = document.querySelector('.theme-switch__checkbox');
+        const body = document.body;
+        
+        // Проверяем сохраненную тему
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+            themeSwitch.checked = true;
+        }
+        
+        // Обработчик переключения темы
+        themeSwitch.addEventListener('change', () => {
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Мобильное меню
+        const menuCheckbox = document.getElementById('checkbox');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        
+        // Управление меню через чекбокс
+        menuCheckbox.addEventListener('change', function() {
+            if(this.checked) {
+                mobileMenu.classList.add('active');
+            } else {
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
+        // Закрытие меню
+        closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            menuCheckbox.checked = false;
+        });
+        
+        // Карусель баннеров
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const totalSlides = slides.length;
+        let slideInterval;
+        
+        // Показ текущего слайда
+        function showSlide(index) {
+            // Обновляем точки навигации
+            updateDots(index);
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        // Обновление активной точки
+        function updateDots(index) {
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Переключение на следующий слайд
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        // Переключение на предыдущий слайд
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        // Запуск автоматического переключения слайдов
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide,7000);
+        }
+        
+        // Остановка автоматического переключения
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+        
+        // Инициализация слайдера
+        function initSlider() {
+            // Показываем первый слайд
+            showSlide(0);
+            
+            // Запускаем автоматическое переключение
+            startSlideShow();
+            
+            // Обработчики для кнопок навигации
+            document.querySelector('.next-slide').addEventListener('click', () => {
+                stopSlideShow();
+                nextSlide();
+                startSlideShow();
+            });
+            
+            document.querySelector('.prev-slide').addEventListener('click', () => {
+                stopSlideShow();
+                prevSlide();
+                startSlideShow();
+            });
+            
+            // Обработчики для точек навигации
+            document.querySelectorAll('.slider-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide'));
+                    stopSlideShow();
+                    showSlide(slideIndex);
+                    startSlideShow();
+                });
+            });
+            
+            // Остановка анимации при наведении на слайдер
+            const banner = document.querySelector('.banner');
+            banner.addEventListener('mouseenter', stopSlideShow);
+            banner.addEventListener('mouseleave', startSlideShow);
+        }
+        
+        // Остановка анимации при наведении на карточки
+        const inner = document.querySelector('.inner');
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                inner.style.animationPlayState = 'paused';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                inner.style.animationPlayState = 'running';
+            });
+        });
+
+        // Адаптация размеров для мобильных устройств
+        function adjustCarousel() {
+            const inner = document.querySelector('.inner');
+            if (window.innerWidth < 768) {
+                inner.style.setProperty('--w', '100px');
+                inner.style.setProperty('--h', '200px');
+                inner.style.setProperty('--translateZ', '250px');
+            } else {
+                inner.style.setProperty('--w', '150px');
+                inner.style.setProperty('--h', '300px');
+                inner.style.setProperty('--translateZ', '350px');
+            }
+        }
+
+        window.addEventListener('resize', adjustCarousel);
+        adjustCarousel();
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = escapeHtml(this.getAttribute('href'));
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Закрываем меню после перехода
+                    mobileMenu.classList.remove('active');
+                    menuCheckbox.checked = false;
+                }
+            });
+        });
+
+        // Фильтрация товаров
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterToggleBtn = document.getElementById('filterToggleBtn');
+            const filtersContainer = document.getElementById('filtersContainer');
+            
+            // Обработчик для кнопки раскрытия/скрытия фильтров
+            filterToggleBtn.addEventListener('click', function() {
+                filtersContainer.classList.toggle('expanded');
+                
+                // Меняем текст кнопки
+                const span = this.querySelector('span');
+                if (filtersContainer.classList.contains('expanded')) {
+                    span.textContent = 'Скрыть фильтры';
+                } else {
+                    span.textContent = 'Показать фильтры';
+                }
+            });
+            
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const applyFiltersBtn = document.getElementById('applyFilters');
+            const resetFiltersBtn = document.getElementById('resetFilters');
+            const productsContainer = document.getElementById('productsContainer');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            // Объект для хранения текущих фильтров
+            let currentFilters = {
+                type: null,
+                mechanism: null,
+                dimensions: {
+                    widthMin: null,
+                    widthMax: null,
+                    depthMin: null,
+                    depthMax: null
+                },
+                sleeping: {
+                    widthMin: null,
+                    widthMax: null,
+                    lengthMin: null,
+                    lengthMax: null
+                }
+            };
+            
+            // Обработчики для кнопок фильтров
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const filterType = this.getAttribute('data-filter');
+                    const filterValue = this.getAttribute('data-value');
+                    
+                    // Снимаем выделение со всех кнопок этой группы
+                    document.querySelectorAll(`.filter-option[data-filter="${filterType}"]`).forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Если кликнули на уже активный фильтр - снимаем его
+                    if (currentFilters[filterType] === filterValue) {
+                        currentFilters[filterType] = null;
+                    } else {
+                        // Иначе применяем новый фильтр
+                        currentFilters[filterType] = filterValue;
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Применение фильтров
+            applyFiltersBtn.addEventListener('click', function() {
+                // Получаем значения габаритов
+                currentFilters.dimensions.widthMin = document.getElementById('width-min').value || null;
+                currentFilters.dimensions.widthMax = document.getElementById('width-max').value || null;
+                currentFilters.dimensions.depthMin = document.getElementById('depth-min').value || null;
+                currentFilters.dimensions.depthMax = document.getElementById('depth-max').value || null;
+                
+                // Получаем значения спального места
+                currentFilters.sleeping.widthMin = document.getElementById('sleep-width-min').value || null;
+                currentFilters.sleeping.widthMax = document.getElementById('sleep-width-max').value || null;
+                currentFilters.sleeping.lengthMin = document.getElementById('sleep-length-min').value || null;
+                currentFilters.sleeping.lengthMax = document.getElementById('sleep-length-max').value || null;
+                
+                filterProducts();
+            });
+            
+            // Сброс фильтров
+            resetFiltersBtn.addEventListener('click', function() {
+                // Сбрасываем все фильтры
+                currentFilters = {
+                    type: null,
+                    mechanism: null,
+                    dimensions: {
+                        widthMin: null,
+                        widthMax: null,
+                        depthMin: null,
+                        depthMax: null
+                    },
+                    sleeping: {
+                        widthMin: null,
+                        widthMax: null,
+                        lengthMin: null,
+                        lengthMax: null
+                    }
+                };
+                
+                // Сбрасываем UI
+                document.querySelectorAll('.filter-option').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                document.getElementById('width-min').value = '';
+                document.getElementById('width-max').value = '';
+                document.getElementById('depth-min').value = '';
+                document.getElementById('depth-max').value = '';
+                document.getElementById('sleep-width-min').value = '';
+                document.getElementById('sleep-width-max').value = '';
+                document.getElementById('sleep-length-min').value = '';
+                document.getElementById('sleep-length-max').value = '';
+                
+                // Показываем все товары
+                productCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                
+                // Удаляем сообщение "Нет результатов", если оно есть
+                const noResults = document.querySelector('.no-results');
+                if (noResults) {
+                    noResults.remove();
+                }
+            });
+            
+            // Функция фильтрации товаров
+            function filterProducts() {
+                let hasResults = false;
+                
+                productCards.forEach(card => {
+                    const type = card.getAttribute('data-type');
+                    const mechanism = card.getAttribute('data-mechanism');
+                    const dimensions = card.getAttribute('data-dimensions').split('x');
+                    const sleeping = card.getAttribute('data-sleeping').split('x');
+                    
+                    const width = parseInt(dimensions[0]);
+                    const depth = parseInt(dimensions[1]);
+                    const sleepWidth = parseInt(sleeping[0]);
+                    const sleepLength = parseInt(sleeping[1]);
+                    
+                    // Проверяем соответствие фильтрам
+                    const typeMatch = !currentFilters.type || type.toLowerCase().includes(currentFilters.type.toLowerCase());
+                    const mechanismMatch = !currentFilters.mechanism || mechanism.toLowerCase().includes(currentFilters.mechanism.toLowerCase());
+                    
+                    // Проверяем габариты
+                    const widthMinMatch = !currentFilters.dimensions.widthMin || width >= parseInt(currentFilters.dimensions.widthMin);
+                    const widthMaxMatch = !currentFilters.dimensions.widthMax || width <= parseInt(currentFilters.dimensions.widthMax);
+                    const depthMinMatch = !currentFilters.dimensions.depthMin || depth >= parseInt(currentFilters.dimensions.depthMin);
+                    const depthMaxMatch = !currentFilters.dimensions.depthMax || depth <= parseInt(currentFilters.dimensions.depthMax);
+                    
+                    // Проверяем спальное место
+                    const sleepWidthMinMatch = !currentFilters.sleeping.widthMin || sleepWidth >= parseInt(currentFilters.sleeping.widthMin);
+                    const sleepWidthMaxMatch = !currentFilters.sleeping.widthMax || sleepWidth <= parseInt(currentFilters.sleeping.widthMax);
+                    const sleepLengthMinMatch = !currentFilters.sleeping.lengthMin || sleepLength >= parseInt(currentFilters.sleeping.lengthMin);
+                    const sleepLengthMaxMatch = !currentFilters.sleeping.lengthMax || sleepLength <= parseInt(currentFilters.sleeping.lengthMax);
+                    
+                    // Если все условия выполнены - показываем карточку
+                    if (typeMatch && mechanismMatch && 
+                        widthMinMatch && widthMaxMatch && depthMinMatch && depthMaxMatch &&
+                        sleepWidthMinMatch && sleepWidthMaxMatch && sleepLengthMinMatch && sleepLengthMaxMatch) {
+                        card.style.display = 'block';
+                        hasResults = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Если нет результатов - показываем сообщение
+                if (!hasResults) {
+                    showNoResultsMessage();
+                } else {
+                    // Удаляем сообщение "Нет результатов", если оно есть
+                    const noResults = document.querySelector('.no-results');
+                    if (noResults) {
+                        noResults.remove();
+                    }
+                }
+            }
+            
+            // Показать сообщение "Нет результатов"
+            function showNoResultsMessage() {
+                // Проверяем, не добавлено ли уже сообщение
+                if (!document.querySelector('.no-results')) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.textContent = 'По вашему запросу ничего не найдено. Попробуйте изменить параметры фильтрации.';
+                    productsContainer.appendChild(noResults);
+                }
+            }
+        });
+        
+        // Функция для фиксации кнопок при скролле
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const themeSwitch = document.querySelector('.theme-switch');
+            const contactContainer = document.querySelector('.contact-container');
+            const menuToggle = document.querySelector('.toggle');
+            
+            if (scrollPosition > 100) {
+                themeSwitch.style.position = 'fixed';
+                themeSwitch.style.top = '20px';
+                themeSwitch.style.right = '20px';
+                
+                contactContainer.style.position = 'fixed';
+                contactContainer.style.top = '20px';
+                contactContainer.style.right = '100px';
+                
+                menuToggle.style.position = 'fixed';
+                menuToggle.style.top = '20px';
+                menuToggle.style.left = '20px';
+            } else {
+                themeSwitch.style.position = 'fixed';
+                themeSwitch.style.top = '20px';
+                themeSwitch.style.right = '20px';
+                
+                contactContainer.style.position = 'fixed';
+                contactContainer.style.top = '20px';
+                contactContainer.style.right = '100px';
+                
+                menuToggle.style.position = 'fixed';
+                menuToggle.style.top = '20px';
+                menuToggle.style.left = '20px';
+            }
+        });
+        
+        // Инициализация слайдера при загрузке страницы
+        document.addEventListener('DOMContentLoaded', initSlider);
+    </script>
+</body>
+</html>  
