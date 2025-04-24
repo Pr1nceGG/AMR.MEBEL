@@ -1,11 +1,13 @@
 {
   "name": "AMR.MEBEL",
   "short_name": "AMR.MEBEL",
-  "description": "Производство качественной мягкой мебели",
+  "description": "Производство качественной мягкой мебели в России",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#222222",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/favicon-32x32.png",
@@ -32,6 +34,28 @@
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["furniture", "home", "shopping"],
+  "lang": "ru-RU",
+  "dir": "ltr"
 }
