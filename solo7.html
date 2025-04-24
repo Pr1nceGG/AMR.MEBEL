@@ -3,25 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMR.MEBEL - Диван Соло</title>
-    
-    <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    
-    <!-- External Resources with SRI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
-          crossorigin="anonymous" referrerpolicy="no-referrer">
-    
+    <title>AMR.MEBEL - Диван Лофт</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Подключение шрифта IBM Plex Serif */
         @font-face {
             font-family: 'IBM Plex Serif';
-            src: url('/fonts/IBMPlexSerif-Regular.woff2') format('woff2'),
-                 url('/fonts/IBMPlexSerif-Regular.woff') format('woff');
+            src: url('fonts/IBMPlexSerif-Regular.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Regular.woff') format('woff');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
@@ -29,8 +18,8 @@
         
         @font-face {
             font-family: 'IBM Plex Serif';
-            src: url('/fonts/IBMPlexSerif-Medium.woff2') format('woff2'),
-                 url('/fonts/IBMPlexSerif-Medium.woff') format('woff');
+            src: url('fonts/IBMPlexSerif-Medium.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Medium.woff') format('woff');
             font-weight: 500;
             font-style: normal;
             font-display: swap;
@@ -38,8 +27,8 @@
         
         @font-face {
             font-family: 'IBM Plex Serif';
-            src: url('/fonts/IBMPlexSerif-SemiBold.woff2') format('woff2'),
-                 url('/fonts/IBMPlexSerif-SemiBold.woff') format('woff');
+            src: url('fonts/IBMPlexSerif-SemiBold.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-SemiBold.woff') format('woff');
             font-weight: 600;
             font-style: normal;
             font-display: swap;
@@ -47,8 +36,8 @@
         
         @font-face {
             font-family: 'IBM Plex Serif';
-            src: url('/fonts/IBMPlexSerif-Bold.woff2') format('woff2'),
-                 url('/fonts/IBMPlexSerif-Bold.woff') format('woff');
+            src: url('fonts/IBMPlexSerif-Bold.woff2') format('woff2'),
+                 url('fonts/IBMPlexSerif-Bold.woff') format('woff');
             font-weight: 700;
             font-style: normal;
             font-display: swap;
@@ -282,8 +271,8 @@
         
         /* ОСНОВНОЕ ИЗМЕНЕНИЕ - стиль для текста описания */
         .description-text {
-            margin-top: 40px;
-            margin-bottom: 25px;
+            margin-top: 40px; /* Регулируйте это значение для изменения отступа сверху */
+            margin-bottom: 25px; /* Регулируйте это значение для изменения отступа снизу */
             font-size: 16px;
             color: #555;
             line-height: 1.7;
@@ -296,13 +285,13 @@
         /* Дополнительные медиа-запросы для адаптации отступов */
         @media (max-width: 767px) {
             .description-text {
-                margin-top: 30px;
+                margin-top: 30px; /* Меньший отступ для мобильных */
             }
         }
         
         @media (min-width: 1024px) {
             .description-text {
-                margin-top: 50px;
+                margin-top: 50px; /* Больший отступ для десктопов */
             }
         }
         
@@ -743,7 +732,7 @@
         <div class="top-menu">
             <a href="index.html" class="menu-logo">AMR.MEBEL</a>
             
-<nav class="menu-nav">
+           <nav class="menu-nav">
                 <a href="index.html" class="menu-link">Главная</a>
                 <a href="index.html" class="menu-link">Каталог</a>
                 <a href="dostavka.html" class="menu-link">Доставка</a>
@@ -752,7 +741,7 @@
             </nav>
             
             <div class="menu-icons">
-                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                <button class="theme-toggle" id="themeToggle">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
@@ -760,7 +749,7 @@
         
         <!-- Шапка с кнопкой назад -->
         <div class="header">
-            <a href="index.html" class="back" aria-label="Назад">
+            <a href="index.html" class="back">
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>
@@ -769,29 +758,29 @@
         <div class="content-wrapper">
             <div class="main">
                 <div class="left">
-                    <h1>Диван "Соло"</h1>
-                    <h2>Мини Диван</h2>
-                    <h3>Цена: 17800₽</h3>
+                    <h1>Диван "Лофт"</h1>
+                    <h2>Прямой диван</h2>
+                    <h3>Цена по запросу</h3>
                     
                     <!-- Галерея изображений -->
                     <div class="image-container">
-                        <img src="/images/solo1.png" alt="Диван Соло - вид спереди" class="sofa-image active" id="image1" loading="lazy">
-                        <img src="/images/solo2.png" alt="Диван Соло - вид сбоку" class="sofa-image" id="image2" loading="lazy">
-                        <img src="/images/solo3.png" alt="Диван Соло - спальное место" class="sofa-image" id="image3" loading="lazy">
+                        <img src="images/loft1.png" alt="Диван Лофт" class="sofa-image active" id="image1">
+                        <img src="images/loft2.png" alt="Диван Лофт" class="sofa-image" id="image2">
+                        <img src="images/loft3.png" alt="Диван Лофт" class="sofa-image" id="image3">
                         
                         <!-- Стрелки навигации -->
-                        <div class="nav-arrow left-arrow" onclick="prevImage()" role="button" aria-label="Предыдущее изображение">
+                        <div class="nav-arrow left-arrow" onclick="prevImage()">
                             <i class="fas fa-chevron-left"></i>
                         </div>
-                        <div class="nav-arrow right-arrow" onclick="nextImage()" role="button" aria-label="Следующее изображение">
+                        <div class="nav-arrow right-arrow" onclick="nextImage()">
                             <i class="fas fa-chevron-right"></i>
                         </div>
                         
                         <!-- Точки навигации -->
                         <div class="image-nav">
-                            <div class="nav-dot active" data-target="image1" role="button" aria-label="Показать изображение 1"></div>
-                            <div class="nav-dot" data-target="image2" role="button" aria-label="Показать изображение 2"></div>
-                            <div class="nav-dot" data-target="image3" role="button" aria-label="Показать изображение 3"></div>
+                            <div class="nav-dot active" data-target="image1"></div>
+                            <div class="nav-dot" data-target="image2"></div>
+                            <div class="nav-dot" data-target="image3"></div>
                         </div>
                     </div>
                     
@@ -804,23 +793,21 @@
                 <!-- Правая часть с описанием -->
                 <div class="right">
                     <!-- Основной текст описания с регулируемыми отступами -->
-                    <p class="description-text">Диван "Соло" - Компактный мини диван Соло характеризуется строгим дизайном и прямыми линиями. Легкая трансформация дивана в спальное место. Для белья и других вещей предусмотрен вместительный ящик.</p>
-                    
+                    <p class="description-text">Диван "Лофт" -Элегантный, стильный прямой диван, сочетает в себе лаконичный дизайн и функциональность, характерную для урбанистического стиля. Особенность дивана — массивные подлокотники, которые подчеркивают геометрическую строгость модели.</p>                   
                     <p><strong>Характеристики модели:</strong></p>  
-                    <ul class="features-list">
-                        <li><strong>Ультракомпактные размеры</strong> 120×80 см - идеально для небольших пространств</li>
-                        <li><strong>Мини-формат "Соло"</strong> с лаконичным дизайном и прямыми линиями</li>
-                        <li><strong>Простой механизм трансформации</strong> на металлокаркасе</li>
-                        <li><strong>Анатомическое основание</strong> из гнутоклееных березовых лат</li>
-                        <li><strong>Комфортный наполнитель:</strong> эластичный ППУ высокой плотности</li>
-                        <li><strong>Практичный бонус:</strong> вместительный ящик для хранения белья</li>
-                        <li><strong>Удобное спальное место</strong> 185×100 см</li>
-                        <li><strong>Идеальное решение</strong> для студий, малогабаритных квартир и компактных помещений</li>
-                    </ul>        
-                    
+<ul style="margin-bottom: 15px; padding-left: 20px;">
+    <li>Прямой диван в стиле лофт с габаритами 245×105 см</li>
+    <li>Элегантный лаконичный дизайн в урбанистическом стиле</li>
+    <li>Выразительные массивные подлокотники, подчеркивающие геометрию формы</li>
+    <li>Надежный механизм трансформации «Тик-так»</li>
+    <li>Усиленное основание из бруса, фанеры и мебельной плиты</li>
+    <li>Трехслойный наполнитель: эластичный ППУ + независимый пружинный блок + Periotek form</li>
+    <li>Комфортное спальное место 150×190 см</li>
+    <li>Идеальное сочетание стиля и функциональности</li>
+</ul>
                     <div class="delivery-container">
                         <p class="delivery-text">В наличии. <a href="dostavka.html">Узнать условия доставки и сборки</a></p>
-                        <button class="next-btn" id="nextModelBtn">Следующая модель</button>
+                        <button class="next-btn">Следующая модель</button>
                     </div>
                     
                     <!-- Рейтинг и отзывы -->
@@ -837,12 +824,12 @@
                             <input type="radio" id="star1" name="rating" value="1">
                             <label for="star1"></label>
                             <span class="rating-text">5.0 (12 отзывов)</span>
-                            <a href="https://www.avito.ru/user/review?fid=789cdaf4a0216095d9c17bba4baa2ee6f9b745bc7871a0a62245ace68da1aaf881927931dd2fc5a3327bde9ff832cdcdaa225dd905100000ffff76ca187b" class="review-link" rel="noopener noreferrer">Оставить отзыв</a>
+                            <a href="https://www.avito.ru/user/review?fid=789cdaf4a0216095d9c17bba4baa2ee6f9b745bc7871a0a62245ace68da1aaf881927931dd2fc5a3327bde9ff832cdcdaa225dd905100000ffff76ca187b" class="review-link">Оставить отзыв</a>
                         </div>
                     </div>
                     
                     <!-- Кнопка заказа -->
-                    <a href="dostavka.html" class="order-btn" id="orderBtn">
+                    <a href="dostavka.html" class="order-btn">
                         <i class="fas fa-shopping-cart"></i> Заказать
                     </a>
                 </div>
@@ -851,9 +838,7 @@
     </div>
 
     <script>
-        (function() {
-            'use strict';
-            
+        document.addEventListener('DOMContentLoaded', function() {
             // Управление изображениями в галерее
             const dots = document.querySelectorAll('.nav-dot');
             const images = document.querySelectorAll('.sofa-image');
@@ -862,8 +847,6 @@
             
             // Функция показа изображения по индексу
             function showImage(index) {
-                if (index < 0 || index >= images.length) return;
-                
                 images.forEach(img => img.classList.remove('active'));
                 dots.forEach(dot => dot.classList.remove('active'));
                 
@@ -897,37 +880,17 @@
                 dot.addEventListener('click', function() {
                     const targetId = this.getAttribute('data-target');
                     const targetIndex = Array.from(images).findIndex(img => img.id === targetId);
-                    if (targetIndex !== -1) {
-                        showImage(targetIndex);
-                        resetInterval();
-                    }
-                });
-                
-                // Добавляем обработчик клавиатуры для доступности
-                dot.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('data-target');
-                        const targetIndex = Array.from(images).findIndex(img => img.id === targetId);
-                        if (targetIndex !== -1) {
-                            showImage(targetIndex);
-                            resetInterval();
-                        }
-                    }
+                    showImage(targetIndex);
+                    resetInterval();
                 });
             });
             
             // Запуск автопрокрутки
             slideInterval = setInterval(nextImage, 5000);
             
-            // Обработчики для клавиатуры
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight') {
-                    nextImage();
-                } else if (e.key === 'ArrowLeft') {
-                    prevImage();
-                }
-            });
+            // Глобальные функции для стрелок
+            window.nextImage = nextImage;
+            window.prevImage = prevImage;
 
             // Переключение темы
             const themeToggle = document.getElementById('themeToggle');
@@ -954,14 +917,9 @@
             });
             
             // Обработчик кнопки "Следующая модель"
-            document.getElementById('nextModelBtn').addEventListener('click', function() {
-                window.location.href = 'liderkreslo9.html';
-            });
-            
-            // Обработчик кнопки заказа
-            document.getElementById('orderBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = 'dostavka.html';
+            const nextBtn = document.querySelector('.next-btn');
+            nextBtn.addEventListener('click', function() {
+                window.location.href = 'akk3.html';
             });
             
             // Плавная прокрутка при загрузке страницы 
@@ -969,17 +927,7 @@
                 top: 0,
                 behavior: 'smooth'
             });
-            
-            // Глобальные функции для стрелок
-            window.nextImage = nextImage;
-            window.prevImage = prevImage;
-            
-            // Обработчик ошибок
-            window.addEventListener('error', function(e) {
-                console.error('Error:', e.message, 'in', e.filename, 'line:', e.lineno);
-                return true;
-            });
-        })();
+        });
     </script>
 </body>
 </html>
